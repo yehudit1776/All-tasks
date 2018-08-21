@@ -74,7 +74,7 @@ function DownPart() {
             table.children[i].children[j].classList.remove("backgroundLinear");
             console.log(table.children[i].children[j]);
             if (i == j || i > j)
-                table.children[i].children[j].classList.add("backgroundLinear");
+                table.children[i].children[j].classList.add("backgroundLinear");                                                                                                                                
         }
     }
 }
