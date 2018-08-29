@@ -1,0 +1,89 @@
+<div class="container">
+  <form [formGroup]="profileForm" (ngSubmit)="submit()">
+    <div class="row">
+      <h4>Fill The Form!!</h4>
+      <div class="input-group">
+        <input type="text" placeholder="Name" minlength="3" maxlength="15" required formControlName="name" />
+
+      </div>
+
+      <div *ngIf="profileForm.get('name').invalid &&
+      ((profileForm.get('name').dirty)||(profileForm.get('name').touched)||submitted)">
+        <div *ngIf="profileForm.get('name').errors.required"> Name field is requiered</div>
+        <div *ngIf="profileForm.get('name').errors.minlength"> Name field length must be between 3 and 15</div>
+      </div>
+
+
+
+
+
+      <div class="input-group">
+        <input type="text" placeholder="TZ" minlength="9" maxlength="9" required formControlName="tz" pattern="[0-9]+"/>
+
+      </div>
+     
+
+      <div *ngIf="profileForm.get('tz').errors &&
+      ((profileForm.get('tz').dirty)||(profileForm.get('tz').touched)||submitted)">
+      <div *ngIf="profileForm.get('tz').errors.required"> TZ field is requiered</div>
+      <div *ngIf="profileForm.get('tz').errors.minlength"> TZ field  must be 9 numbers</div>
+      <div *ngIf="profileForm.get('tz').errors.pattern"> TZ field  must contains only numbers</div>
+      <div *ngIf="profileForm.get('tz').errors.ValidateTz"> TZ not legal</div>
+      </div>
+
+      <div class="input-group">
+        <input type="number" placeholder="Age" min="0" max="120" required formControlName="age" />
+
+      </div>
+
+      <div *ngIf="profileForm.get('age').errors &&
+      ((profileForm.get('age').dirty)||(profileForm.get('age').touched)||submitted)">
+      <div *ngIf="profileForm.get('age').errors.required"> Age field is requiered</div>
+      <div *ngIf="profileForm.get('age').errors.min"> age must be greater than 0</div>
+      <div *ngIf="profileForm.get('age').errors.max"> too heigh age</div>
+      </div>
+      <div class="input-group">
+
+        <select required #country formControlName="country">
+          <option value="" disabled selected>Country</option>
+          <option *ngFor="let c of countries">{{c}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="profileForm.get('country').errors &&
+    ((profileForm.get('country').dirty)||(profileForm.get('country').touched)||submitted)">
+    <div *ngIf="profileForm.get('country').errors.required"> Age field is requiered</div>
+
+    </div>
+    <div class="col-half">
+
+      <div class="input-group">
+        <input type="radio" name="isMale" value=true id="gender-male" required formControlName="isMale" />
+        <label for="gender-male">Male</label>
+        <input type="radio" name="isMale" value=false id="gender-female" formControlName="isMale" />
+        <label for="gender-female">Female</label>
+      </div>
+
+      <div *ngIf="profileForm.get('isMale').errors &&
+      ((profileForm.get('isMale').dirty)||(profileForm.get('isMale').touched)||submitted)">
+      <div *ngIf="profileForm.get('isMale').errors.required"> isMale field is requiered</div>
+  
+      </div>
+    </div>
+
+    <div class="row">
+
+
+
+
+
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <input type="submit" value="הוסף" />
+
+      </div>
+    </div>
+  </form>
+</div>
